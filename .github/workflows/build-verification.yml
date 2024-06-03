@@ -15,4 +15,10 @@ jobs:
           arch: x64
 
       - name: Build
-        run: msbuild
+        run: msbuild UEDumper.sln /p:Configuration=Release
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: '**/bin/Release/**'
